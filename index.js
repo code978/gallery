@@ -9,11 +9,11 @@ ConnectDB();
 
 app.use(fileUpload({
     createParentPath: true
-  }));
+}));
 
-app.use('/',require('./routes/index'))
+app.use('/', require('./routes/index'))
 
 
-app.listen(port,()=>{
+app.listen(port, () => {
     console.log(`you app is listen .`)
 })
