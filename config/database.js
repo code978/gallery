@@ -1,7 +1,7 @@
 const moongoose = require('moongoose')
 
 
-const db = `mongodb://localhost:27017/?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
+const db = `mongodb://localhost:27017/gallery?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
 
 
 const ConnectDB = async ()=>{

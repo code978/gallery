@@ -1,11 +1,16 @@
 const express = require('express');
-const Router = express.Router();
+const router = express.Router();
 const UserSchmea = require('../Model/Schema')
 
-Router.post('/',async(req,res)=>{
+router.get('/',async(req,res)=>{
+    const user = await UserSchmea.find();
+    res.send(user);
+})
+
+router.post('/res',async(req,res)=>{
     let user = new UserSchmea(req.body);
     await user.save();
     res.send(user);
 })
 
-module.exports = Router;
+module.exports = router;

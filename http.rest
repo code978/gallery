@@ -1,8 +1,11 @@
 
+# to get the data from mongo db
+GET http://localhost:3000/ HTTP/1.1
 
-GET http://localhost:3000 HTTP/1.1
-Content-Type: application/json
+# # to insert data in mongo db
+# POST http://localhost:3000/res HTTP/1.1
+# Content-Type: application/json
 
-{
-    "user":"shubham sharma"
-}
+# {
+#     "user":"shubham sharma"
+# }
