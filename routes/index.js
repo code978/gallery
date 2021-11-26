@@ -10,13 +10,14 @@ router.get('/',async(req,res)=>{
 router.post('/res',async(req,res)=>{
     let user = new UserSchmea(req.body);
     await user.save();
-    res.send(user);
+    // res.send(user);
+    console.log(req.body)
 })
 
 router.put('/res/:id',async(req,res)=>{
     const {id} = req.params;
-    const user =  UserSchmea.findbyId(id);
-    console.log(user)
+    const user =  await UserSchmea.findByIdAndUpdate(id,req.body);
+    res.send(user);
 })
 
 router.delete('/res/:id',async(req,res)=>{
