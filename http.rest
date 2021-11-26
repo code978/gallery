@@ -3,17 +3,21 @@
 # GET http://localhost:3000/ HTTP/1.1
 
 # # to insert data in mongo db
-# POST http://localhost:3000/res HTTP/1.1
-# Content-Type: application/json
-
-# {
-#     "name":"sharma"
-# }
-
-# to upate the data 
-PUT http://localhost:3000/res/61a0f104b02659f66c19dccf HTTP/1.1
-Content-Type:: application/json
+POST http://localhost:3000/res HTTP/1.1
+Content-Type: application/json
 
 {
-    "name":"arya shubham"
+    "name":"raju"
 }
+
+# # to upate the data 
+# PUT http://localhost:3000/res/61a0f104b02659f66c19dccf HTTP/1.1
+# Content-Type:: application/json
+
+# {
+#     "name":"arya"
+# }
+
+
+# to delete the data 
+# DELETE http://localhost:3000/res/61a0fe0beb3dd6cb5adf9fe5 HTTP/1.1

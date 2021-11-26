@@ -10,18 +10,19 @@ router.get('/',async(req,res)=>{
 router.post('/res',async(req,res)=>{
     let user = new UserSchmea(req.body);
     await user.save();
-    // res.send(user);
-    console.log(req.body)
+    res.send(user);
 })
 
 router.put('/res/:id',async(req,res)=>{
     const {id} = req.params;
     const user =  await UserSchmea.findByIdAndUpdate(id,req.body);
-    res.send(user);
+    res.send(req.body);
 })
 
 router.delete('/res/:id',async(req,res)=>{
-    res.send(`deleted : ${id}`);
+    const user_id = req.params.id;
+    const user = await UserSchmea.findByIdAndDelete(user_id);
+    res.send(user);
 })
 
 module.exports = router;
