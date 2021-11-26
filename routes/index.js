@@ -11,16 +11,24 @@ router.post('/res', async (req, res) => {
 
     const image = req.files.img;
     const encode_img = image.toString('base64');
-    // const final_img = {
-    //     contentType: req.file.mimetype,
-    //     image: new Buffer(encode_img, 'base64')
-    // };
-
-    let user = new UserSchmea({
-        name: req.body.name,
-        img: encode_img
+    let MedicalFileUrl;
+    
+    const { body } = await got.post("https://api.imgur.com/3/image", {
+      headers: {
+        Authorization: "Client-ID" + " " + process.env.IMGUR_CLIENT_ID,
+      },
+      json: {
+        image: imageAsBase64,
+      },
+      responseType: "json",
     });
+    MedicalFileUrl = body.data.link;
 
+
+    const user = new UserSchmea({
+        name:req.body.name,
+        img:MedicalFileUrl
+    })
     await user.save();
     res.send(user);
 })

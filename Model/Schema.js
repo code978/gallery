@@ -6,7 +6,6 @@ const UserSchema = new Schema({
         type:String,
     },
     img:{
-        data:Buffer,
         type:String
     }
 })
