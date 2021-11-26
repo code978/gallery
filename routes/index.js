@@ -14,7 +14,12 @@ router.post('/res',async(req,res)=>{
 })
 
 router.put('/res/:id',async(req,res)=>{
-    res.send(`updated : ${id}`);
+    const {id} = req.params;
+    const res = {
+        "status":"sucess",
+        id:`${id}`
+    }
+    res.send(res);
 })
 
 router.delete('/res/:id',async(req,res)=>{
