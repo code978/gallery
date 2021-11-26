@@ -15,11 +15,8 @@ router.post('/res',async(req,res)=>{
 
 router.put('/res/:id',async(req,res)=>{
     const {id} = req.params;
-    const res = {
-        "status":"sucess",
-        id:`${id}`
-    }
-    res.send(res);
+    const user =  UserSchmea.findbyId(id);
+    console.log(user)
 })
 
 router.delete('/res/:id',async(req,res)=>{
