@@ -13,4 +13,12 @@ router.post('/res',async(req,res)=>{
     res.send(user);
 })
 
+router.put('/res/:id',async(req,res)=>{
+    res.send(`updated : ${id}`);
+})
+
+router.delete('/res/:id',async(req,res)=>{
+    res.send(`deleted : ${id}`);
+})
+
 module.exports = router;
