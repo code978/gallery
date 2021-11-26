@@ -11,9 +11,7 @@ app.use(fileUpload({
     createParentPath: true
   }));
 
-app.get('/',(req,res)=>{
-    res.send(req.body);
-})
+app.use('/',require('./routes/index'))
 
 
 app.listen(port,()=>{
