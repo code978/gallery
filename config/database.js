@@ -1,13 +1,12 @@
 const moongoose = require('moongoose')
 
-
-const db = `mongodb://localhost:27017/gallery?readPreference=primary&appname=MongoDB%20Compass&directConnection=true&ssl=false`
-
-
 const ConnectDB = async () => {
-    await moongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true }).
-        catch((e)=>{console.log(error)})
-    console.log(`database connected.`);
+    try {
+        await moongoose.connect('mongodb://localhost:27017/test', { useNewUrlParser: true })
+        console.log(`database connected.`);
+    } catch (error) {
+        console.log(error)
+    }
 }
 
 module.exports = ConnectDB;
