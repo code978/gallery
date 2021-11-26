@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const UserSchmea = require('../Model/Schema')
-
+const got = require("got");
 router.get('/', async (req, res) => {
     const user = await UserSchmea.find();
     res.send(user);
