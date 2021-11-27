@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 })
 
 router.post('/res', upload.single('image'), async (req, res) => {
-    const User = new UserSchmea({
+    const User = await new UserSchmea({
         name: req.body.name,
         img: req.file.originalname
     })
