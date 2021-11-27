@@ -1,36 +1,25 @@
 const express = require('express');
 const router = express.Router();
 const UserSchmea = require('../Model/Schema')
-const got = require("got");
+const multer = require('multer')
+const upload = multer({dest:'uploads/'});
+
 router.get('/', async (req, res) => {
     const user = await UserSchmea.find();
     res.send(user);
 })
 
-router.post('/res', async (req, res) => {
-
-    const image = req.files.img;
-    const encode_img = image.toString('base64');
-    let MedicalFileUrl;
-    
-    const { body } = await got.post("https://api.imgur.com/3/image", {
-      headers: {
-        Authorization: "Client-ID" + " " + process.env.IMGUR_CLIENT_ID,
-      },
-      json: {
-        image: imageAsBase64,
-      },
-      responseType: "json",
-    });
-    MedicalFileUrl = body.data.link;
-
-
-    const user = new UserSchmea({
-        name:req.body.name,
-        img:MedicalFileUrl
-    })
-    await user.save();
-    res.send(user);
+router.post('/res',upload.single('image') ,async (req, res) => {
+    try {
+        const User = new UserSchmea({
+            name:req.body.name,
+            img:req.file.originalname
+        })
+        await User.save();
+        res.send(User);
+    } catch (error) {
+        res.send(400);
+    }
 })
 
 router.put('/res/:id', async (req, res) => {
