@@ -5,7 +5,7 @@ const port = process.env.PORT || 3000;
 const bodyparser = require('body-parser');
 const ConnectDB = require('./config/database')
 app.use(express.json());
-
+app.use(express.static('./upload'))
 ConnectDB();
 
 // app.use(fileUpload({
